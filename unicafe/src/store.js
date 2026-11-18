@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { useShallow } from 'zustand/react/shallow'
 
 const useCounterStore = create(set => ({
   good: 0,
@@ -12,9 +13,9 @@ const useCounterStore = create(set => ({
 }))
 
 // the hook functions that are used elsewhere in app
-export const useCounters = () => useCounterStore(state => ({
-    good: state.good,
-    neutral: state.neutral,
-    bad: state.bad
-}))
+export const useCounters = () => useCounterStore(useShallow(state => ({
+  good: state.good,
+  neutral: state.neutral,
+  bad: state.bad
+})))
 export const useCounterControls = () => useCounterStore(state => state.actions)

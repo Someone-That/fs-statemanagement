@@ -1,7 +1,7 @@
 import { useCounters } from '../store'
 
 const Statistics = () => {
-  const {good, neutral, bad} = useCounter()
+  const {good, neutral, bad} = useCounters()
   const all = good + neutral + bad
   const average = all === 0 ? 0 : (good-bad)/all
   const positive = all === 0 ? 0 : good/all * 100 + "%"
