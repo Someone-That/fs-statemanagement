@@ -9,7 +9,7 @@ const AnecdoteList = () => {
 
   const handleVote = async (anecdote) => {
     vote(anecdote.id)
-    setNotification("You voted '" + anecdote.content + "'")
+    setNotification("you voted '" + anecdote.content + "'")
   }
 
   const handleDelete = async (anecdote) => {
