@@ -4,22 +4,20 @@ import anecdoteService from './services/anecdotes'
 
 const byVotesDesc = (a, b) => b.votes - a.votes
 
-const useAnecdoteStore = create((set) => ({
-  // anecdotes: anecdotesAtStart.map(asObject),
+const useAnecdoteStore = create((set, get) => ({
   anecdotes: [],
   filter: '',
   actions: {
     vote: async (id) => {
-      const anecdote = useAnecdoteStore.getState().anecdotes.find(a => a.id === id)
+      const anecdote = get().anecdotes.find(a => a.id === id)
       const updated = await anecdoteService.update(
         id, { ...anecdote, votes: anecdote.votes + 1 }
       )
       set(state => ({
         anecdotes: state.anecdotes.map(anecdote =>
           anecdote.id === id ? updated : anecdote
-        ).toSorted(byVotesDesc)
-      })
-    )},
+        ).toSorted(byVotesDesc)}))
+    },
     add: async (content) => {
       const newAnecdote = await anecdoteService.createNew(content)
       set(state => ({ anecdotes: state.anecdotes.concat(newAnecdote).toSorted(byVotesDesc) }))
