@@ -17,10 +17,24 @@ const createNew = async (content) => {
   
   const response = await fetch(baseUrl, options)
   if (!response.ok) {
-    throw new Error('Failed to create note')
+    throw new Error('Failed to create anecdote')
   }
   
   return await response.json()
 }
 
-export default { getAll, createNew }
+const update = async (id, anecdote) => {
+  const response = await fetch(`${baseUrl}/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(anecdote),
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to update anecdote')
+  }
+
+  return await response.json()
+}
+
+export default { getAll, createNew, update }
