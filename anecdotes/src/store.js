@@ -22,10 +22,15 @@ const useAnecdoteStore = create((set, get) => ({
       const newAnecdote = await anecdoteService.createNew(content)
       set(state => ({ anecdotes: state.anecdotes.concat(newAnecdote).toSorted(byVotesDesc) }))
     },
+    remove: async (id) => {
+      await anecdoteService.remove(id)
+      set(state => ({ anecdotes: state.anecdotes.filter((anecdote) => anecdote.id !== id) }))
+    },
     setFilter: value => set(() => ({ filter: value })),
     initialize: async () => {
       const anecdotes = await anecdoteService.getAll()
       set(() => ({ anecdotes }))
+      set(state => ({ anecdotes: state.anecdotes.toSorted(byVotesDesc) }))
     }
   },
 }))
