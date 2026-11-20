@@ -10,7 +10,7 @@ vi.mock('./services/anecdotes', () => ({
 }))
 
 import anecdoteService from './services/anecdotes'
-import useAnecdoteStore, { useAnecdotes, useFilter, useAnecdoteActions } from './store'
+import useAnecdoteStore, { useAnecdotes, useAnecdoteActions } from './store'
 
 beforeEach(() => {
   useAnecdoteStore.setState({ anecdotes: [], filter: '' })
