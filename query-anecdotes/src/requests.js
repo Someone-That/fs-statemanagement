@@ -10,7 +10,7 @@ export const getAnecdotes = async () => {
 
 export const createAnecdote = async (newAnecdote) => {
   if (newAnecdote.content.length < 5) {
-    throw new Error('Anecdote too short')
+    throw new Error('too short anecdote, must have length 5 or more')
   }
 
   const options = {
