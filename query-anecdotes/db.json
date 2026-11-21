@@ -32,13 +32,18 @@
     },
     {
       "content": "test1",
-      "votes": 2,
+      "votes": 4,
       "id": "cabb2fbb-6bbf-44ff-9783-a209683ef10d"
     },
     {
       "content": "test2",
-      "votes": 4,
+      "votes": 8,
       "id": "342a89b1-d893-4dd1-8566-8f20ef9ae43d"
+    },
+    {
+      "content": "test3",
+      "votes": 2,
+      "id": "4e157a02-9335-409d-ad97-f0d44befcccd"
     }
   ]
 }
